@@ -1,5 +1,1125 @@
 <!DOCTYPE html>
-<html>
-<head><meta http-equiv="refresh" content="0;url=intro.html"></head>
-<body></body>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katarína Somorovská — Fotografka</title>
+  <meta name="description" content="Emócia v detaili. Stratégia v obraze. Fotografka s viac než 10-ročnými skúsenosťami zo Skalice.">
+  <meta property="og:title" content="Katarína Somorovská — Fotografka">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0e0c0b;
+      --bg-warm: #1a1614;
+      --bg-card: #211e1b;
+      --text: #e8e0d8;
+      --text-muted: #9a8e82;
+      --accent: #8b0a1b;
+      --accent-light: #c4243b;
+      --cream: #d4c5b2;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 24px;
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(14, 12, 11, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    nav .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    nav .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    nav .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent-light);
+      transition: width 0.3s;
+    }
+
+    nav .nav-links a:hover,
+    nav .nav-links a.active { color: var(--text); }
+
+    nav .nav-links a:hover::after,
+    nav .nav-links a.active::after { width: 100%; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px; height: 1.5px;
+      background: var(--cream);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      max-height: 900px;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      filter: brightness(0.35);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(14,12,11,0.3) 0%,
+        rgba(14,12,11,0.1) 40%,
+        rgba(14,12,11,0.6) 80%,
+        rgba(14,12,11,1) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .hero-content .tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .hero-scroll {
+      display: inline-block;
+      margin-top: 24px;
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    .hero-scroll svg {
+      width: 24px; height: 24px;
+      stroke: var(--text-muted);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 100px 0; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--cream);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .section-text {
+      max-width: 640px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--bg-warm); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-image { position: relative; }
+
+    .about-image img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 12px -12px -12px 12px;
+      border: 1px solid var(--accent);
+      z-index: -1;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .about-stats .stat { text-align: center; }
+
+    .about-stats .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--cream);
+      line-height: 1;
+    }
+
+    .about-stats .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ── SHOWCASE (diverse work samples in About) ── */
+    .showcase {
+      margin-top: 64px;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .showcase-grid .showcase-item {
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .showcase-grid .showcase-item img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      transition: transform 0.6s ease, filter 0.6s ease;
+    }
+
+    .showcase-grid .showcase-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.8);
+    }
+
+    /* ── GALLERY SHARED ── */
+    .gallery-section { position: relative; }
+
+    .gallery-header {
+      margin-bottom: 48px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      transition: transform 0.6s ease, filter 0.6s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.03);
+      filter: brightness(0.8);
+    }
+
+    /* ── MASONRY ── */
+    .masonry {
+      columns: 3;
+      column-gap: 16px;
+    }
+
+    .masonry .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+    }
+
+    .masonry .gallery-item img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── PARALLAX DIVIDER ── */
+    .divider {
+      position: relative;
+      height: 50vh;
+      min-height: 300px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .divider-bg {
+      position: absolute;
+      inset: -20%;
+    }
+
+    .divider-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.3);
+    }
+
+    .divider-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(14,12,11,0.5);
+    }
+
+    .divider-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .divider-content blockquote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      color: var(--cream);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .divider-content .quote-author {
+      margin-top: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      font-style: normal;
+    }
+
+    /* ── PROMO GRID ── */
+    .promo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .promo-grid .gallery-item img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    .promo-grid .gallery-item.design-item img {
+      aspect-ratio: auto;
+      object-fit: contain;
+      background: var(--bg-card);
+      padding: 16px;
+    }
+
+    /* ── ATELIER ── */
+    .atelier { background: var(--bg-warm); }
+
+    .atelier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .atelier-grid .gallery-item img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    /* ── SPOLUPRÁCA ── */
+    .spolup-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .spolup-grid .gallery-item img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    /* ── 3D TLAC ── */
+    .threed-section { text-align: center; }
+
+    .threed-section .badge {
+      display: inline-block;
+      padding: 8px 24px;
+      border: 1px solid var(--text-muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--bg-warm); }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      margin-top: 48px;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      padding: 40px;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '\201E';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--accent);
+      position: absolute;
+      top: 16px; left: 24px;
+      opacity: 0.4;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-card .author {
+      margin-top: 20px;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--cream);
+      font-style: normal;
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      text-align: center;
+      padding-bottom: 60px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+
+    .contact-item { text-align: center; }
+
+    .contact-item .contact-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 8px;
+    }
+
+    .contact-item .contact-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--cream);
+    }
+
+    .contact-item a:hover .contact-value { color: var(--text); }
+
+    .instagram-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 48px;
+      padding: 14px 40px;
+      border: 1px solid var(--cream);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .instagram-btn:hover {
+      background: var(--cream);
+      color: var(--bg);
+    }
+
+    .instagram-btn svg { width: 18px; height: 18px; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid rgba(154, 142, 130, 0.15);
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.92);
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      background: none; border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      padding: 16px;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+
+    .lightbox-nav:hover { opacity: 1; }
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .masonry { columns: 2; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-image { max-width: 400px; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .atelier-grid { grid-template-columns: repeat(2, 1fr); }
+      .promo-grid { grid-template-columns: repeat(2, 1fr); }
+      .showcase-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      nav .nav-links {
+        display: none;
+        position: fixed;
+        top: 64px;
+        left: 0; right: 0; bottom: 0;
+        background: rgba(14, 12, 11, 0.97);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+      }
+      nav .nav-links.mobile-open { display: flex; }
+      .hamburger { display: flex; }
+      .masonry { columns: 1; }
+      .promo-grid { grid-template-columns: 1fr; }
+      .atelier-grid { grid-template-columns: 1fr; }
+      .spolup-grid { grid-template-columns: 1fr; }
+      .showcase-grid { grid-template-columns: repeat(2, 1fr); }
+      section { padding: 64px 0; }
+      .about-stats { gap: 24px; }
+      .contact-links { flex-direction: column; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="logo">KS</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">O mne</a></li>
+        <li><a href="#moto">Moto</a></li>
+        <li><a href="#promo">Promo</a></li>
+        <li><a href="#atelier">Ateliér</a></li>
+        <li><a href="#spoluprace">Spolupráca</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <!-- Rider with red Ducati — landscape 1599x1066 -->
+      <img src="images/moto/ae5e27e707c4b3cfae181c386d837690.jpg" alt="Moto lifestyle — Ducati">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Katarína Somorovská</h1>
+      <p class="tagline">Emócia v detaili. Stratégia v obraze.</p>
+      <a href="#about" class="hero-scroll">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image fade-in">
+          <!-- Katarína with her Nikon camera -->
+          <img src="images/intro/522baa88f91bd0a077be88e15fb6d6fe.jpg" alt="Katarína Somorovská s fotoaparátom">
+        </div>
+        <div class="fade-in">
+          <p class="section-label">O mne</p>
+          <h2 class="section-title">Príbeh v každom obraze</h2>
+          <div class="section-text">
+            <p>Volám sa Katarína Somorovská a fotografii sa venujem viac než 10 rokov. Aktuálne pôsobím v Skalici a moje portfólio je rovnako pestré ako cesta, ktorou som si v tejto profesii prešla.</p>
+            <br>
+            <p>Motorky a ich jazdcov som začala dokumentovať v roku 2020. Na motorkách ma fascinuje pocit energie, sústredenia a slobody. Nie som fotografka, ktorá vás postaví a bude vám dávať inštrukcie. Nechávam priestor autentickým momentom.</p>
+            <br>
+            <p>Ak mi dovolíte, budem rada, ak váš výnimočný deň zdokumentujem svojim objektívom.</p>
+          </div>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-num">10+</div>
+              <div class="stat-label">Rokov skúseností</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">500+</div>
+              <div class="stat-label">Fotení</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diverse work showcase -->
+      <div class="showcase fade-in">
+        <p class="section-label" style="text-align:center;">Moja tvorba</p>
+        <div class="showcase-grid">
+          <!-- Family photo -->
+          <div class="showcase-item gallery-item"><img src="images/intro/0e8db08816d04e11e4016b10d6b0b5f8.jpg" alt="Rodinná fotografia" loading="lazy"></div>
+          <!-- Dog portrait -->
+          <div class="showcase-item gallery-item"><img src="images/intro/6ee933b6dc9eef47513d6aa69ef91d70.jpg" alt="Fotografia psa" loading="lazy"></div>
+          <!-- Mountain landscape with person -->
+          <div class="showcase-item gallery-item"><img src="images/intro/dbf29c9d8271a16cdc2b71163703bfe6.jpg" alt="Krajina — Vysoké Tatry" loading="lazy"></div>
+          <!-- Moto night shot with KAES watermark -->
+          <div class="showcase-item gallery-item"><img src="images/intro/f0c3e58e0d7dd55f7a1879d357fb4ee0.jpg" alt="Nočná moto fotografia" loading="lazy"></div>
+          <!-- Girl with dog in forest -->
+          <div class="showcase-item gallery-item"><img src="images/intro/89a5089b54cfbb04a46ee9818cd16ef7.jpg" alt="Dievča so psom" loading="lazy"></div>
+          <!-- Girl hugging dog close-up -->
+          <div class="showcase-item gallery-item"><img src="images/intro/bc5f74536717eb9335067282e740df15.jpg" alt="Portrét so psom" loading="lazy"></div>
+          <!-- Baby on grass -->
+          <div class="showcase-item gallery-item"><img src="images/intro/1d1889a103f3306538a92dbeb4862bea.jpg" alt="Detská fotografia" loading="lazy"></div>
+          <!-- Father & baby B&W -->
+          <div class="showcase-item gallery-item"><img src="images/cennik/fa0289a20b962e8dac874e80bdd3aff5.jpg" alt="Otec s dieťaťom" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOTO LIFESTYLE -->
+  <section class="gallery-section" id="moto">
+    <div class="container">
+      <div class="gallery-header fade-in">
+        <div>
+          <p class="section-label">Portfólio</p>
+          <h2 class="section-title">Moto Lifestyle</h2>
+          <p class="section-text">Každá jazda začína plynom. Možno tú ďalšiu zachytím aj s tebou.</p>
+        </div>
+      </div>
+      <div class="masonry">
+        <!-- Yamaha R1 burnout at sunset -->
+        <div class="gallery-item fade-in"><img src="images/moto/285ddef2176cd68d9dceba197b92f30b.jpg" alt="Yamaha R1 burnout" loading="lazy"></div>
+        <!-- Rider with helmet close-up -->
+        <div class="gallery-item fade-in"><img src="images/moto/d734a47a51f6e69fabaad62485bf3e09.jpg" alt="Jazdec s helmou" loading="lazy"></div>
+        <!-- Rider by container -->
+        <div class="gallery-item fade-in"><img src="images/moto/7fa094593b8ac0cf539523fecd6d37a2.jpg" alt="Jazdec pri kontajneri" loading="lazy"></div>
+        <!-- Two riders by old building -->
+        <div class="gallery-item fade-in"><img src="images/intro/b19d1d73adf6ae3a0a10f5a18ca298b6.jpg" alt="Dvaja jazdci" loading="lazy"></div>
+        <!-- Couple with Kawasaki Ninja -->
+        <div class="gallery-item fade-in"><img src="images/intro/9e22b1beede5065227ae3586780ef6fd.jpg" alt="Pár s Kawasaki Ninja" loading="lazy"></div>
+        <!-- Rider on Kawasaki by lake -->
+        <div class="gallery-item fade-in"><img src="images/intro/1e0e0937bdd57c8ec252d5f1383bcf39.jpg" alt="Jazdkyňa na Kawasaki" loading="lazy"></div>
+        <!-- Remaining actual moto photos -->
+        <div class="gallery-item fade-in"><img src="images/moto/0763878bbde00c9d4c2248abb9a5e47e.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/4278e04db41da3288f37232a0abf8da7.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/d048a707567484f451cd15e1ae82e054.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/3d77d76891ebd995ba203fa380c30904.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/e55778ffe98a623cf32e3339b380940f.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/85e4f60a6e1ad65ac93c471e93cd8bc1.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/5af0fbc41461d6dd5dce159bb79a3604.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/ae5e27e707c4b3cfae181c386d837690.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/91d14e192c72b99045d2f8546ac4d0db.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/cf6113730d2378c6309a35cb283c8d5f.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/7eca36c48b922eb3977837d16dcfbf8e.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/c41cf937d61e5615a2d46a958511f612.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/5efdc70edbd869db3ac0ed79bb18f40e.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/f7cbd59db147fc5bc6f3976a3b91ca64.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/448076003242322f98c1725f75876f89.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/d19713b001d660cd8e601e41807f7c34.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/fb2cb83d2c2d210f25555b050c4f5c0b.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/720ff2a45686dcdc71a49c7837b63e2d.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/98746da7c47d218b47a4eeee4687de89.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/a317fefca7fcb7ec7c093b0647142151.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/57c5cd78fd3de577c3f8955594ae89aa.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/7e060c61f2988cd44a1c8485579bc363.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/b4d69416804fdad8348ddcecdcc2a407.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/1f26ac752174d8fa3639fbd76e63a860.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/d08371b68e17d280bb296619b238be72.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/4762072dc0fd0bd62b38714a8333b806.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/cce781550b62c21b0eeec07f8e646c1e.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/434ff75bca25c3c29da28ef69fee5d5f.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/690c4a0e871ac71364d14102cd02ccf0.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/7d2022227dcba8cba11eec93a3105f6d.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/57dffe2d244260ef77993d8331192368.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/402402d938309f629d0186ee02d51616.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/73d10f9d9fa61cf968081fcec662e0a3.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/0990739d9f4639463d3b4a0757d9f584.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/d9e5c1c75ac7f26cc678e226be48a3a8.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/e4049c9a9dcb24f9a92d36716cf4ba8e.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/8248247f7b78de128ff9612dd44d9de5.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/3b1d16192662ee187ca98178e797b754.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/5a5f2280e190059ff10303b6fb76e139.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/b1f52ce61b1a1759585895e3eb7d03ea.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/f7f07277834454197ef24a87c86f702e.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/7488a0d3e5301a6a742d67b050ae4277.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/0eef8d33099024620e98f995c4cc1abb.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/271d67b9b8dd6840768f6b0290d9f832.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/437dae7421bb86826cc4b910e7c6e1f9.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/7d38b9aa8371cae69939cdb9afbf25ff.jpg" alt="Moto lifestyle" loading="lazy"></div>
+        <div class="gallery-item fade-in"><img src="images/moto/0eef8d33099024620e98f995c4cc1abb.jpg" alt="Moto lifestyle" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE DIVIDER -->
+  <div class="divider">
+    <div class="divider-bg">
+      <img src="images/moto/285ddef2176cd68d9dceba197b92f30b.jpg" alt="" loading="lazy">
+    </div>
+    <div class="divider-overlay"></div>
+    <div class="divider-content">
+      <blockquote>
+        „Fotky zachytili atmosféru dokonale. Nič nebolo nútené — všetko prirodzené a uvoľnené."
+      </blockquote>
+      <p class="quote-author">— Spokojný klient</p>
+    </div>
+  </div>
+
+  <!-- PROMO — Reklamná fotografia + Grafický návrh -->
+  <section class="gallery-section" id="promo">
+    <div class="container">
+      <div class="gallery-header fade-in">
+        <div>
+          <p class="section-label">Služby</p>
+          <h2 class="section-title">Reklamná fotografia & Grafický návrh</h2>
+          <p class="section-text">Fotografia doplnená grafickým návrhom. Komplexné vizuálne riešenie pre váš brand.</p>
+        </div>
+      </div>
+      <div class="promo-grid">
+        <!-- Product photography — woman with brushes -->
+        <div class="gallery-item fade-in"><img src="images/promo/389ccc628bb699f85b4d2c4144fe2451.jpg" alt="Reklamná fotografia — kozmetika" loading="lazy"></div>
+        <!-- Product photography — woman with bottle -->
+        <div class="gallery-item fade-in"><img src="images/promo/86b5893c6b725e14124f21d8dffbbee4.jpg" alt="Reklamná fotografia — produkt" loading="lazy"></div>
+        <!-- Product photography — mirror portrait -->
+        <div class="gallery-item fade-in"><img src="images/promo/a4e45c2ddfdb3461d1fae78cb205b401.jpg" alt="Reklamná fotografia — portrét" loading="lazy"></div>
+        <!-- Graphic design — business cards for Václava Špirková -->
+        <div class="gallery-item design-item fade-in"><img src="images/promo/10728edea64a0933962b97624678e6a5.png" alt="Grafický návrh — vizitky" loading="lazy"></div>
+        <!-- Graphic design — gift voucher -->
+        <div class="gallery-item design-item fade-in"><img src="images/promo/773d3f73e87d2bac042c8efffa3eefa8.png" alt="Grafický návrh — darčekový poukaz" loading="lazy"></div>
+        <!-- Portrait work — guy in LA jacket -->
+        <div class="gallery-item fade-in"><img src="images/intro/3833be0806b8a7c55dc8411077491c46.jpg" alt="Portrétna fotografia" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATELIER — Valentín studio photos -->
+  <section class="atelier" id="atelier">
+    <div class="container">
+      <div class="gallery-header fade-in">
+        <div>
+          <p class="section-label">Ateliér</p>
+          <h2 class="section-title">Ateliérové fotenie</h2>
+          <p class="section-text">Valentín, portrét, rodina — príďte si vytvoriť spomienku v príjemnom prostredí.</p>
+        </div>
+      </div>
+      <div class="atelier-grid">
+        <!-- Couple kissing — Valentine -->
+        <div class="gallery-item fade-in"><img src="images/atelier/2887ef0bf44b73af46e68c7aac5c4954.jpg" alt="Valentínske fotenie — pár" loading="lazy"></div>
+        <!-- Little girl with stuffed animal -->
+        <div class="gallery-item fade-in"><img src="images/atelier/299935853ce567347a10375640f9b3d5.jpg" alt="Valentínske fotenie — dievčatko" loading="lazy"></div>
+        <!-- Couple smiling on floor -->
+        <div class="gallery-item fade-in"><img src="images/atelier/1c826b2088ba852184b19e9cbb9e4e8b.jpg" alt="Valentínske fotenie — pár" loading="lazy"></div>
+        <!-- Couple portrait close-up -->
+        <div class="gallery-item fade-in"><img src="images/atelier/4b1a2bbbed1befe03a07aa64052ec864.jpg" alt="Valentínske fotenie — portrét" loading="lazy"></div>
+        <!-- Little girl standing with sunglasses -->
+        <div class="gallery-item fade-in"><img src="images/atelier/ad7036492b425959cdb9470ebbd773f7.jpg" alt="Valentínske fotenie — dievčatko" loading="lazy"></div>
+        <!-- Mom with daughter -->
+        <div class="gallery-item fade-in"><img src="images/atelier/d414a864aad2ffab9293e5afcc7a4dc8.jpg" alt="Valentínske fotenie — mama s dcérou" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPOLUPRÁCA — Portrait/collaboration work -->
+  <section class="gallery-section" id="spoluprace">
+    <div class="container">
+      <div class="gallery-header fade-in">
+        <div>
+          <p class="section-label">Spolupráca</p>
+          <h2 class="section-title">Spolupráca</h2>
+          <p class="section-text">Portréty a spolupráce s tvorcami, ktorí hľadajú autentický vizuál.</p>
+        </div>
+      </div>
+      <div class="spolup-grid">
+        <!-- Man on bench — autumn portrait -->
+        <div class="gallery-item fade-in"><img src="images/spolupraca/18d3a77d71dbb81dad819b127adba232.jpg" alt="Portrét — jeseň" loading="lazy"></div>
+        <!-- Man on stairs looking up -->
+        <div class="gallery-item fade-in"><img src="images/spolupraca/9cfaba526cfb1a3ac23006667e3565d9.jpg" alt="Portrét — schody" loading="lazy"></div>
+        <!-- Portrait through pipe — creative -->
+        <div class="gallery-item fade-in"><img src="images/intro/9f086911c719e6c35c86a843285f6fff.jpg" alt="Kreatívny portrét" loading="lazy"></div>
+        <!-- Guy on stairs — urban -->
+        <div class="gallery-item fade-in"><img src="images/intro/d11dd4e71bd1de5707eca880b41f2b72.jpg" alt="Mestský portrét" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    <div class="divider-bg">
+      <img src="images/intro/dbf29c9d8271a16cdc2b71163703bfe6.jpg" alt="" loading="lazy">
+    </div>
+    <div class="divider-overlay"></div>
+    <div class="divider-content">
+      <blockquote>
+        „Kati bola úžasná. Výsledok predčil naše očakávania."
+      </blockquote>
+      <p class="quote-author">— Spokojný klient</p>
+    </div>
+  </div>
+
+  <!-- 3D TLAČ -->
+  <section class="threed-section" id="3dtlac">
+    <div class="container fade-in">
+      <p class="section-label">Nová služba</p>
+      <h2 class="section-title">3D Tlač</h2>
+      <p class="section-text" style="margin: 0 auto;">Nová kreatívna služba, ktorú pre vás pripravujem.</p>
+      <div class="badge">Obsah sa pripravuje</div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="fade-in" style="text-align:center; margin-bottom: 16px;">
+        <p class="section-label">Referencie</p>
+        <h2 class="section-title">Čo hovoria klienti</h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card fade-in">
+          <p>Fotky zachytili atmosféru dokonale. Nič nebolo nútené — všetko pôsobilo prirodzene a uvoľnene. Skutočná spomienka, ku ktorej sa radi vraciame.</p>
+          <div class="author">— L + T + D</div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <p>Veľmi pekná práca, naozaj úžasný skill! Kvalita úpravy a štýl kompozície sú na vysokej úrovni.</p>
+          <div class="author">— Spokojný klient</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="kontakt">
+    <div class="container fade-in">
+      <p class="section-label">Kontakt</p>
+      <h2 class="section-title">Napíšte mi</h2>
+      <p class="section-text" style="margin: 0 auto;">Neváhajte ma kontaktovať — rada sa s vami porozprávam o vašom projekte.</p>
+      <div class="contact-links">
+        <div class="contact-item">
+          <div class="contact-label">Telefón</div>
+          <a href="tel:+421949647490"><div class="contact-value">+421 949 647 490</div></a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">Email</div>
+          <a href="mailto:somkataa@gmail.com"><div class="contact-value">somkataa@gmail.com</div></a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">Lokácia</div>
+          <div class="contact-value">Skalica, Slovensko</div>
+        </div>
+      </div>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="instagram-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="5"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        Instagram
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Katarína Somorovská. Všetky práva vyhradené.</p>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Zavrieť">&times;</button>
+    <button class="lightbox-nav lightbox-prev" aria-label="Predchádzajúca">&#8249;</button>
+    <button class="lightbox-nav lightbox-next" aria-label="Ďalšia">&#8250;</button>
+    <img src="" alt="" id="lightboxImg">
+  </div>
+
+  <script>
+    // ── NAV SCROLL ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── HAMBURGER ──
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('mobile-open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('mobile-open');
+      });
+    });
+
+    // ── ACTIVE NAV LINK ──
+    const sections = document.querySelectorAll('section[id]');
+    const navLinksAll = navLinks.querySelectorAll('a');
+
+    function updateActiveLink() {
+      const scrollY = window.scrollY + 200;
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+        if (scrollY >= top && scrollY < top + height) {
+          navLinksAll.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+
+    // ── FADE IN ON SCROLL ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── LIGHTBOX ──
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    let galleryImages = [];
+    let currentIndex = 0;
+
+    document.querySelectorAll('.gallery-item img').forEach((img, i) => {
+      galleryImages.push(img.src);
+      img.parentElement.addEventListener('click', () => {
+        currentIndex = i;
+        lightboxImg.src = img.src;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+    document.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      lightboxImg.src = galleryImages[currentIndex];
+    });
+
+    document.querySelector('.lightbox-next').addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      lightboxImg.src = galleryImages[currentIndex];
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') {
+        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        lightboxImg.src = galleryImages[currentIndex];
+      }
+      if (e.key === 'ArrowRight') {
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+        lightboxImg.src = galleryImages[currentIndex];
+      }
+    });
+  </script>
+</body>
 </html>
